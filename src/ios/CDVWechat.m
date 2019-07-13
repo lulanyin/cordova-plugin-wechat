@@ -134,7 +134,9 @@ static int const MAX_THUMBNAIL_SIZE = 320;
         [self failWithCallbackID:command.callbackId withMessage:@"参数格式错误"];
         return ;
     }
-
+    if(![params objectForKey:@"appid"]){
+        [params setValue:self.wechatAppId forKey:@"appid"];
+    }
     // check required parameters
     NSArray *requiredParams;
     if ([params objectForKey:@"mch_id"])
